@@ -114,6 +114,7 @@ if effervescence.settings.environmental.enabled then
       local already_emitted = {}
       for _,player in ipairs(core.get_connected_players()) do
         if player then
+          local pname = player:get_player_name()
           local pos = player:get_pos()
           local look_dir = player:get_look_dir()
           local bx, by, bz = get_look_bias(look_dir)
@@ -132,7 +133,9 @@ if effervescence.settings.environmental.enabled then
                 for i = r, len + r - 1, 1 do
                   local particle = effervescence.environmental_particles[particles[i % len + 1]]
                   if particle and particle:check(emitter) then
-                    core.add_particlespawner(particle:emit(emitter))
+                    local pdef = particle:emit(emitter)
+                    pdef.playername = pname,
+                    core.add_particlespawner(pdef)
                     already_emitted[hash] = true
                     break
                   end
