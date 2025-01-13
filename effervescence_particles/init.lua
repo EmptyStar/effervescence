@@ -30,7 +30,7 @@ effervescence.register_environmental_particles({
   end,
   applies_to = function(self, node, def)
     local groups = def.groups or {}
-    local does_apply = (groups.stone and groups.stone > 0) or (groups.sand and groups.sand > 0) or node:find("dry_") or node:find("clay") or node:find("gravel") or node:find("litter$") or node:find("podzol")
+    local does_apply = (groups.stone and groups.stone > 0) or (groups.sand and groups.sand > 0) or (groups.everness_sand and groups.everness_sand > 0) or node:find("dry_") or node:find("clay") or node:find("gravel") or node:find("litter$") or node:find("podzol")
     return does_apply and { "effervescence:floors" }
   end,
   emit = function(self, pos)
