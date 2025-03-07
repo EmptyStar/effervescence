@@ -51,7 +51,10 @@ effervescence.register_environmental_particles({
       maxexptime = 8,
       minacc = {x = -1.5, y = 0, z = -1.5},
       maxacc = {x = 1.5, y = 0.05, z = 1.5},
-      texture = extract_particles(ndef.tiles,ndef.color),
+      texture = {
+        name = extract_particles(ndef.tiles,ndef.color),
+        blend = "clip",
+      },
       collisiondetection = false,
       vertical = false,
     }
@@ -88,7 +91,10 @@ effervescence.register_environmental_particles({
       minsize = 0.25,
       maxsize = 1.25,
       glow = ndef.glow or ndef.light_source,
-      texture = extract_particles(ndef.tiles,ndef.color),
+      texture = {
+        name = extract_particles(ndef.tiles,ndef.color),
+        blend = "clip",
+      },
       collisiondetection = false,
       vertical = false,
     }
@@ -125,7 +131,10 @@ effervescence.register_environmental_particles({
       minsize = 0.25,
       maxsize = 0.375,
       glow = ndef.glow or ndef.light_source,
-      texture = extract_particles(ndef.tiles,ndef.color),
+      texture = {
+        name = extract_particles(ndef.tiles,ndef.color),
+        blend = "clip",
+      },
       collisiondetection = false,
       vertical = false,
     }
@@ -165,7 +174,10 @@ effervescence.register_environmental_particles({
       maxexptime = 5,
       minsize = 0.175,
       maxsize = 0.225,
-      texture = extract_particles(ndef.tiles,ndef.color),
+      texture = {
+        name = extract_particles(ndef.tiles,ndef.color),
+        blend = "clip",
+      },
       collisiondetection = false,
       vertical = false,
     }
@@ -214,7 +226,10 @@ effervescence.register_environmental_particles({
       minsize = 1,
       maxsize = 1.5,
       glow = ndef.glow or ndef.light_source,
-      texture = extract_particles(ndef.tiles,ndef.color),
+      texture = {
+        name = extract_particles(ndef.tiles,ndef.color),
+        blend = "clip",
+      },
       collisiondetection = false,
       vertical = false,
     }
@@ -299,7 +314,10 @@ effervescence.register_environmental_particles({
       minsize = 0.375,
       maxsize = 0.5,
       glow = ndef.glow or ndef.light_source,
-      texture = extract_particles(flowers[node.name] == "self" and ndef.tiles or {[1] = "effervescence_petals.png"},flowers[node.name] ~= "self" and flowers[node.name]),
+      texture = {
+        name = extract_particles(flowers[node.name] == "self" and ndef.tiles or {[1] = "effervescence_petals.png"},flowers[node.name] ~= "self" and flowers[node.name]),
+        blend = "clip",
+      },
       collisiondetection = true,
       collision_removal = true,
       vertical = false,
@@ -337,7 +355,10 @@ effervescence.register_environmental_particles({
       minsize = 0.25,
       maxsize = 0.325,
       glow = ndef.glow or ndef.light_source or 2,
-      texture = extract_particles(ndef.tiles,ndef.color,"4,7"),
+      texture = {
+        name = extract_particles(ndef.tiles,ndef.color,"4,7"),
+        blend = "clip",
+      },
       collisiondetection = true,
       collision_removal = true,
       vertical = false,
@@ -388,7 +409,10 @@ effervescence.register_environmental_particles({
       minsize = 0.1,
       maxsize = 0.2,
       glow = ndef.glow or ndef.light_source or 2,
-      texture = extract_particles(ndef.tiles,nil,"4,7") .. "^[sheet:4x4:1,1^[opacity:255^[brighten",
+      texture = {
+        name = extract_particles(ndef.tiles,nil,"4,7") .. "^[sheet:4x4:1,1^[opacity:255^[brighten",
+        blend = "clip",
+      },
       collisiondetection = false,
       vertical = false,
     }
@@ -473,7 +497,10 @@ effervescence.register_player_particles({
       minsize = 0.75,
       maxsize = 1,
       glow = ndef.glow or ndef.light_source,
-      texture = extract_particles(ndef.tiles,ndef.color),
+      texture = {
+        name = extract_particles(ndef.tiles,ndef.color),
+        blend = "clip",
+      },
       collisiondetection = true,
       collision_removal = true,
       vertical = false,
