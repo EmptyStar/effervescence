@@ -22,6 +22,9 @@ local function extract_particles(tiles,color,coords)
   return tiles .. "^[resize:16x16^[sheet:8x8:" .. (coords or (math.random(0,7) .. "," .. math.random(0,7))) .. (color and ("^[multiply:" .. color) or "")
 end
 
+-- Get texture blend value
+local blend_method = core.features.particle_blend_clip and "clip" or "alpha"
+
 -- Dusty particles (sand, dry grass, etc.)
 effervescence.register_environmental_particles({
   name = "effervescence:dusty",
@@ -53,7 +56,7 @@ effervescence.register_environmental_particles({
       maxacc = {x = 1.5, y = 0.05, z = 1.5},
       texture = {
         name = extract_particles(ndef.tiles,ndef.color),
-        blend = "clip",
+        blend = blend_method,
       },
       collisiondetection = false,
       vertical = false,
@@ -93,7 +96,7 @@ effervescence.register_environmental_particles({
       glow = ndef.glow or ndef.light_source,
       texture = {
         name = extract_particles(ndef.tiles,ndef.color),
-        blend = "clip",
+        blend = blend_method,
       },
       collisiondetection = false,
       vertical = false,
@@ -133,7 +136,7 @@ effervescence.register_environmental_particles({
       glow = ndef.glow or ndef.light_source,
       texture = {
         name = extract_particles(ndef.tiles,ndef.color),
-        blend = "clip",
+        blend = blend_method,
       },
       collisiondetection = false,
       vertical = false,
@@ -176,7 +179,7 @@ effervescence.register_environmental_particles({
       maxsize = 0.225,
       texture = {
         name = extract_particles(ndef.tiles,ndef.color),
-        blend = "clip",
+        blend = blend_method,
       },
       collisiondetection = false,
       vertical = false,
@@ -228,7 +231,7 @@ effervescence.register_environmental_particles({
       glow = ndef.glow or ndef.light_source,
       texture = {
         name = extract_particles(ndef.tiles,ndef.color),
-        blend = "clip",
+        blend = blend_method,
       },
       collisiondetection = false,
       vertical = false,
@@ -316,7 +319,7 @@ effervescence.register_environmental_particles({
       glow = ndef.glow or ndef.light_source,
       texture = {
         name = extract_particles(flowers[node.name] == "self" and ndef.tiles or {[1] = "effervescence_petals.png"},flowers[node.name] ~= "self" and flowers[node.name]),
-        blend = "clip",
+        blend = blend_method,
       },
       collisiondetection = true,
       collision_removal = true,
@@ -357,7 +360,7 @@ effervescence.register_environmental_particles({
       glow = ndef.glow or ndef.light_source or 2,
       texture = {
         name = extract_particles(ndef.tiles,ndef.color,"4,7"),
-        blend = "clip",
+        blend = blend_method,
       },
       collisiondetection = true,
       collision_removal = true,
@@ -411,7 +414,7 @@ effervescence.register_environmental_particles({
       glow = ndef.glow or ndef.light_source or 2,
       texture = {
         name = extract_particles(ndef.tiles,nil,"4,7") .. "^[sheet:4x4:1,1^[opacity:255^[brighten",
-        blend = "clip",
+        blend = blend_method,
       },
       collisiondetection = false,
       vertical = false,
@@ -499,7 +502,7 @@ effervescence.register_player_particles({
       glow = ndef.glow or ndef.light_source,
       texture = {
         name = extract_particles(ndef.tiles,ndef.color),
-        blend = "clip",
+        blend = blend_method,
       },
       collisiondetection = true,
       collision_removal = true,
